@@ -1,3 +1,5 @@
+-- FORKED BY KDDS -- 
+
 Oh My Bash is an open source, community-driven framework for managing your [bash](https://www.gnu.org/software/bash/) configuration.
 
 Sounds boring. Let's try again.
@@ -25,7 +27,7 @@ Oh My Bash is installed by running one of the following commands in your termina
 #### via curl
 
 ```shell
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/calamityesp/oh-my-bash-kdds/master/tools/install.sh)"
 ```
 
 #### via wget
