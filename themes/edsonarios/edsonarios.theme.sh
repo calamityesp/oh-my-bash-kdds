@@ -29,7 +29,7 @@ function _omb_theme_PROMPT_COMMAND {
   local python_venv
   _omb_prompt_get_python_venv
 
-  PS1="\n⚡ \t $_omb_prompt_bold_teal${directory}$_omb_prompt_bold_purple$python_venv$_omb_prompt_bold_green$(__git_ps1 " (%s)") \n${ret_status}"
+  PS1="\n⚡ \t $_omb_prompt_bold_brown${directory}$_omb_prompt_bold_purple$python_venv$_omb_prompt_bold_green$(__git_ps1 " (%s)") \n${ret_status}"
 }
 
 _omb_util_add_prompt_command _omb_theme_PROMPT_COMMAND
