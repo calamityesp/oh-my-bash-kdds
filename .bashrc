@@ -173,7 +173,7 @@ HISTFILESIZE=2000
 # alias ohmybash="mate ~/.oh-my-bash"
 
 # Adding scripts to path
-export PATH="~/oh-my-bash/custom/scripts:$PATH"
+export PATH="~/.oh-my-bash/custom/scripts:$PATH"
 
 # launch tmux automatically at launch 
 if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then 
@@ -184,3 +184,5 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+source ~/.oh-my-bash/custom/bash/exports.sh
