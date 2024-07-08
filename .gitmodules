@@ -1,0 +1,3 @@
+[submodule "custom/obsidian"]
+	path = custom/obsidian
+	url = git@github.com:calamityesp/obsidian.git
