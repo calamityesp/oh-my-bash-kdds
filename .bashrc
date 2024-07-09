@@ -97,7 +97,7 @@ completions=(
 
 # Correcting the environment variable check
 if [ -z "${CLEARTOOL_PATH+x}" ]; then
-  kddsAliases='pAliases'  # Assuming pAliases and wAliases are strings, not commands
+  kddsAliases='paliases'  # Assuming pAliases and wAliases are strings, not commands
 else
   kddsAliases='wAliases'
 fi
@@ -113,6 +113,7 @@ aliases=(
 aliases=(
   general
   pAliases
+  pFunctions
 )
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-bash/plugins/*)
