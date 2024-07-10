@@ -108,11 +108,13 @@ export KDDS_ALIASES=$kddsAliases
 aliases=(
   general
   "$kddsAliases"  # Assuming kddsAliases is a string that should be part of the array
+  pFunctions
 )
 # Defining aliases as an array
 aliases=(
   general
   pAliases
+  pFunctions
 )
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-bash/plugins/*)
