@@ -178,6 +178,8 @@ HISTFILESIZE=2000
 export PATH="~/.oh-my-bash/custom/scripts:$PATH"
 export BROWSER=wslview
 export NVM_DIR="$HOME/.nvm"
+export DISPLAY=:0
+
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
@@ -196,3 +198,6 @@ if [ -f '/home/calamityesp/tmp/google-cloud-sdk/completion.bash.inc' ]; then . '
 
 export MANPAGER="nvim +Man!"
 export MANWIDTH=999
+
+# experimental
+export GTK_THEME=Adwaita:dark
