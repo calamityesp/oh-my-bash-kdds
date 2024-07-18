@@ -193,3 +193,6 @@ if [ -f '/home/calamityesp/tmp/google-cloud-sdk/path.bash.inc' ]; then . '/home/
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/calamityesp/tmp/google-cloud-sdk/completion.bash.inc' ]; then . '/home/calamityesp/tmp/google-cloud-sdk/completion.bash.inc'; fi
+
+export MANPAGER="nvim +Man!"
+export MANWIDTH=999
