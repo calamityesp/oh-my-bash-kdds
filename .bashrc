@@ -1,7 +1,10 @@
 # Enable the subsequent settings only in interactive sessions
 case $- in
   *i*) ;;
-    *) return;;
+    *)
+      source /home/calamityesp/.oh-my-bash/custom/bash/exports.sh
+      return
+      ;;
 esac
 
 # Path to your oh-my-bash installation.
