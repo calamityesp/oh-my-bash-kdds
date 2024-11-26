@@ -199,3 +199,6 @@ if [ -f '/home/calamityesp/tmp/google-cloud-sdk/completion.bash.inc' ]; then . '
 
 export MANPAGER="nvim +Man!"
 export MANWIDTH=999
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
