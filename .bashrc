@@ -178,7 +178,7 @@ HISTFILESIZE=2000
 # alias ohmybash="mate ~/.oh-my-bash"
 
 # Adding scripts to path
-export PATH="~/.oh-my-bash/custom/scripts:$PATH"
+export PATH="~/.oh-my-bash/custom/scripts:~/bin:$HOME/.dotnet/tools/:$PATH"
 export BROWSER=wslview
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
