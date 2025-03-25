@@ -148,9 +148,9 @@ HISTSIZE=1000
 HISTFILESIZE=2000
 
 # asdf configration files
-. "$HOME/.asdf/asdf.sh"
-. "$HOME/.asdf/completions/asdf.bash"
-
+# . "$HOME/.asdf/asdf.sh"
+# . "$HOME/.asdf/completions/asdf.bash"
+#
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -187,9 +187,15 @@ export NVM_DIR="$HOME/.nvm"
 source ~/.oh-my-bash/custom/bash/exports.sh
 
 # launch tmux automatically at launch
+shopt -s nocasematch # make case insensitive
 if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then
-  tmux attach -t default || tmux new-session -s default
+  read -p "Launch Tmux (y/n): " launchTmux
+  if [[ "$launchTmux" == "y" ]]; then
+    tmux attach -t default || tmux new-session -s default
+  fi
+  clear
 fi
+shopt -u nocasematch  # unset case sensitive
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/calamityesp/tmp/google-cloud-sdk/path.bash.inc' ]; then . '/home/calamityesp/tmp/google-cloud-sdk/path.bash.inc'; fi
@@ -202,3 +208,11 @@ export MANWIDTH=999
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+# variable for libreoffice to run gtk3 (VCL - visual component library) variable LibreOffice uses for rendering UI
+# other options for LibreOffice UI rendering    qt6, qt5, kf5, gen
+export SAL_USE_VCLPLUGIN=gtk3
+
+# configure asdf completions
+. <(asdf completion bash)
+source /usr/share/nvm/init-nvm.sh
