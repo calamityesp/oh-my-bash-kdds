@@ -215,4 +215,8 @@ export SAL_USE_VCLPLUGIN=gtk3
 
 # configure asdf completions
 . <(asdf completion bash)
-source /usr/share/nvm/init-nvm.sh
+. <(gh completion -s bash)
+. ~/.git-completion.bash
+
+__git_complete git-rebase _git_rebase
+# source /usr/share/nvm/init-nvm.sh
