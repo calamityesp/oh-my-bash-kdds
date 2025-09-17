@@ -8,7 +8,7 @@ case $- in
 esac
 
 # Path to your oh-my-bash installation.
-export OSH='/home/calamityesp/.oh-my-bash'
+export OSH='/home/calamityesp/.oh-my-kdds'
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-bash is loaded.
@@ -220,3 +220,6 @@ export SAL_USE_VCLPLUGIN=gtk3
 
 __git_complete git-rebase _git_rebase
 # source /usr/share/nvm/init-nvm.sh
+
+# add homebrew to path
+export PATH=/home/linuxbrew/.linuxbrew/bin/:$PATH
