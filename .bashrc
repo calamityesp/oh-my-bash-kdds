@@ -223,3 +223,6 @@ __git_complete git-rebase _git_rebase
 
 # add homebrew to path
 export PATH=/home/linuxbrew/.linuxbrew/bin/:$PATH
+
+# set vim mode bash
+set -o vi
