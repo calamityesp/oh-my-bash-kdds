@@ -1,0 +1,250 @@
+#
+# ░░      ░░░░      ░░░  ░░░░░░░░░      ░░░  ░░░░  ░░        ░░        ░░  ░░░░  ░
+# ▒  ▒▒▒▒  ▒▒  ▒▒▒▒  ▒▒  ▒▒▒▒▒▒▒▒  ▒▒▒▒  ▒▒   ▒▒   ▒▒▒▒▒  ▒▒▒▒▒▒▒▒  ▒▒▒▒▒▒  ▒▒  ▒▒
+# ▓  ▓▓▓▓▓▓▓▓  ▓▓▓▓  ▓▓  ▓▓▓▓▓▓▓▓  ▓▓▓▓  ▓▓        ▓▓▓▓▓  ▓▓▓▓▓▓▓▓  ▓▓▓▓▓▓▓    ▓▓▓
+# █  ████  ██        ██  ████████        ██  █  █  █████  ████████  ████████  ████
+# ██      ███  ████  ██        ██  ████  ██  ████  ██        █████  ████████  ████
+#
+# ░░░░░░░░░░░░░░░░░░░░░░░░░       ░░░░      ░░░░      ░░░  ░░░░  ░░       ░░░░      ░░
+# ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒  ▒▒▒▒  ▒▒  ▒▒▒▒  ▒▒  ▒▒▒▒▒▒▒▒  ▒▒▒▒  ▒▒  ▒▒▒▒  ▒▒  ▒▒▒▒  ▒
+# ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓       ▓▓▓  ▓▓▓▓  ▓▓▓      ▓▓▓        ▓▓       ▓▓▓  ▓▓▓▓▓▓▓
+# █████████████████████████  ████  ██        ████████  ██  ████  ██  ███  ███  ████  █
+# █████████████████████████       ███  ████  ███      ███  ████  ██  ████  ███      ██
+#
+ # check if the shell is interactive
+ case $- in
+   *i*) ;;
+   *) return ;;
+  esac
+
+
+# Path to oh-my-kdds installation
+export OSH='$HOME/.oh-my-kdds'
+
+
+#----------------------------------
+#  Setting Bash Theme
+#----------------------------------
+# theme options [font, font-kdds]
+OSH_THEME="font-kdds"
+
+
+#----------------------------------
+#  Add oh mybash optionals here
+#  (see below for optionals)
+#----------------------------------
+
+
+
+
+#-------------------------------------------------------------------------------------
+#                                   configurations
+#-------------------------------------------------------------------------------------
+
+# To disable the uses of "sudo" by oh-my-bash, please set "false" to
+# this variable.  The default behavior for the empty value is "true".
+OMB_USE_SUDO=false
+
+# To enable/disable display of Python virtualenv and condaenv
+# OMB_PROMPT_SHOW_PYTHON_VENV=true  # enable
+# OMB_PROMPT_SHOW_PYTHON_VENV=false # disable
+
+# Which completions would you like to load? (completions can be found in ~/.oh-my-kdds/completions/*)
+# Custom completions may be added to ~/.oh-my-kdds/custom/completions/
+# Example format: completions=(ssh git bundler gem pip pip3)
+# Add wisely, as too many completions slow down shell startup.
+completions=(
+  git
+  composer
+  ssh
+)
+
+# Which aliases would you like to load? (aliases can be found in ~/.oh-my-bash/aliases/*)
+# Custom aliases may be added to ~/.oh-my-bash/custom/aliases/
+# Example format: aliases=(vagrant composer git-avh)
+# Add wisely, as too many aliases slow down shell startup.
+
+# Correcting the environment variable check
+if [ -z "${CLEARTOOL_PATH+x}" ]; then
+  kddsAliases='pAliases'  # Assuming pAliases and wAliases are strings, not commands
+else
+  kddsAliases='wAliases'
+fi
+
+export KDDS_ALIASES=$kddsAliases
+
+# Defining aliases as an array
+aliases=(
+  general
+  "$kddsAliases"  # Assuming kddsAliases is a string that should be part of the array
+  pFunctions
+)
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-bash/plugins/*)
+# Custom plugins may be added to ~/.oh-my-bash/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+  git
+  bashmarks
+)
+
+# Which plugins would you like to conditionally load? (plugins can be found in ~/.oh-my-bash/plugins/*)
+# Custom plugins may be added to ~/.oh-my-bash/custom/plugins/
+# Example format:
+#  if [ "$DISPLAY" ] || [ "$SSH" ]; then
+#      plugins+=(tmux-autoattach)
+#  fi
+
+
+#-----------------------------------------------------------------
+# -------------------- User configuration ------------------------
+#-----------------------------------------------------------------
+
+#----------------------------------
+#             Sourcing
+#----------------------------------
+
+# source the export file from custom
+source ~/.oh-my-kdds/custom/bash/exports.sh
+
+
+#----------------------------------
+#             Exports
+#----------------------------------
+#export PATH="~/.oh-my-bash/custom/scripts:$PATH"
+export BROWSER=wslview
+export MANPATH="/usr/local/man:$MANPATH"
+
+
+#----------------------------------
+#       Application Config
+#----------------------------------
+
+#         NVM
+# --------------------
+# nvm related something or another
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+#         Asdf
+# --------------------
+# asdf configration files
+. "$HOME/.asdf/asdf.sh"
+. "$HOME/.asdf/completions/asdf.bash"
+
+#        Tmux
+# --------------------
+# launch tmux automatically at launch
+if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then
+  tmux attach -t default || tmux new-session -s default
+fi
+
+#   google cloud sdk
+# --------------------\
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/calamityesp/tmp/google-cloud-sdk/path.bash.inc' ]; then . '/home/calamityesp/tmp/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/calamityesp/tmp/google-cloud-sdk/completion.bash.inc' ]; then . '/home/calamityesp/tmp/google-cloud-sdk/completion.bash.inc'; fi
+
+
+#----------------------------------
+#             Other
+#----------------------------------
+#
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+# Set personal aliases, overriding those provided by oh-my-bash libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-bash
+# users are encouraged to define aliases within the OSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+
+
+
+
+
+#-------------------------------------------------------------------------------------
+#                         Optional Settings From oh my bash
+#-------------------------------------------------------------------------------------
+
+# If you set OSH_THEME to "random", you can ignore themes you don't like.
+# OMB_THEME_RANDOM_IGNORED=("powerbash10k" "wanelo")
+
+# Uncomment the following line to use case-sensitive completion.
+# OMB_CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion. Case
+# sensitive completion must be off. _ and - will be interchangeable.
+# OMB_HYPHEN_SENSITIVE="false"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_OSH_DAYS=13
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you don't want the repository to be considered dirty
+# if there are untracked files.
+# SCM_GIT_DISABLE_UNTRACKED_DIRTY="true"
+
+# Uncomment the following line if you want to completely ignore the presence
+# of untracked files in the repository.
+# SCM_GIT_IGNORE_UNTRACKED="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.  One of the following values can
+# be used to specify the timestamp format.
+# * 'mm/dd/yyyy'     # mm/dd/yyyy + time
+# * 'dd.mm.yyyy'     # dd.mm.yyyy + time
+# * 'yyyy-mm-dd'     # yyyy-mm-dd + time
+# * '[mm/dd/yyyy]'   # [mm/dd/yyyy] + [time] with colors
+# * '[dd.mm.yyyy]'   # [dd.mm.yyyy] + [time] with colors
+# * '[yyyy-mm-dd]'   # [yyyy-mm-dd] + [time] with colors
+# If not set, the default value is 'yyyy-mm-dd'.
+# HIST_STAMPS='yyyy-mm-dd'
+
+# Uncomment the following line if you do not want OMB to overwrite the existing
+# aliases by the default OMB aliases defined in lib/*.sh
+# OMB_DEFAULT_ALIASES="check"
+
+# Would you like to use another custom folder than $OSH/custom?
+# OSH_CUSTOM=/path/to/new-custom-folder
+
+
