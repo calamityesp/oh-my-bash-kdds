@@ -2,7 +2,7 @@
 case $- in
   *i*) ;;
     *)
-      source /home/calamityesp/.oh-my-bash/custom/bash/exports.sh
+      source /home/calamityesp/.oh-my-kdds/custom/bash/exports.sh
       return
       ;;
 esac
@@ -178,13 +178,13 @@ HISTFILESIZE=2000
 # alias ohmybash="mate ~/.oh-my-bash"
 
 # Adding scripts to path
-export PATH="~/.oh-my-bash/custom/scripts:~/bin:$HOME/.dotnet/tools/:$PATH"
+export PATH="~/.oh-my-kdds/custom/scripts:~/bin:$HOME/.dotnet/tools/:$PATH"
 export BROWSER=wslview
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-source ~/.oh-my-bash/custom/bash/exports.sh
+source ~/.oh-my-kdds/custom/bash/exports.sh
 
 # launch tmux automatically at launch
 shopt -s nocasematch # make case insensitive
