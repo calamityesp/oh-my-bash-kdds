@@ -1,11 +1,14 @@
 # Enable the subsequent settings only in interactive sessions
 case $- in
   *i*) ;;
-    *) return;;
+    *)
+      source /home/calamityesp/.oh-my-kdds/custom/bash/exports.sh
+      return
+      ;;
 esac
 
 # Path to your oh-my-bash installation.
-export OSH='/home/calamityesp/.oh-my-bash'
+export OSH='/home/calamityesp/.oh-my-kdds'
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-bash is loaded.
@@ -108,6 +111,7 @@ export KDDS_ALIASES=$kddsAliases
 aliases=(
   general
   "$kddsAliases"  # Assuming kddsAliases is a string that should be part of the array
+  pFunctions
 )
 # Defining aliases as an array
 aliases=(
@@ -144,9 +148,9 @@ HISTSIZE=1000
 HISTFILESIZE=2000
 
 # asdf configration files
-. "$HOME/.asdf/asdf.sh"
-. "$HOME/.asdf/completions/asdf.bash"
-
+# . "$HOME/.asdf/asdf.sh"
+# . "$HOME/.asdf/completions/asdf.bash"
+#
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -174,21 +178,51 @@ HISTFILESIZE=2000
 # alias ohmybash="mate ~/.oh-my-bash"
 
 # Adding scripts to path
-export PATH="~/.oh-my-bash/custom/scripts:$PATH"
+export PATH="~/.oh-my-kdds/custom/scripts:~/bin:$HOME/.dotnet/tools/:$PATH"
 export BROWSER=wslview
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-source ~/.oh-my-bash/custom/bash/exports.sh
+source ~/.oh-my-kdds/custom/bash/exports.sh
 
 # launch tmux automatically at launch
+shopt -s nocasematch # make case insensitive
 if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then
-  tmux attach -t default || tmux new-session -s default
+  read -p "Launch Tmux (y/n): " launchTmux
+  if [[ "$launchTmux" == "y" ]]; then
+    tmux attach -t default || tmux new-session -s default
+  fi
+  clear
 fi
+shopt -u nocasematch  # unset case sensitive
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/calamityesp/tmp/google-cloud-sdk/path.bash.inc' ]; then . '/home/calamityesp/tmp/google-cloud-sdk/path.bash.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/calamityesp/tmp/google-cloud-sdk/completion.bash.inc' ]; then . '/home/calamityesp/tmp/google-cloud-sdk/completion.bash.inc'; fi
+
+export MANPAGER="nvim +Man!"
+export MANWIDTH=999
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+# variable for libreoffice to run gtk3 (VCL - visual component library) variable LibreOffice uses for rendering UI
+# other options for LibreOffice UI rendering    qt6, qt5, kf5, gen
+export SAL_USE_VCLPLUGIN=gtk3
+
+# configure asdf completions
+. <(asdf completion bash)
+. <(gh completion -s bash)
+. ~/.git-completion.bash
+
+__git_complete git-rebase _git_rebase
+# source /usr/share/nvm/init-nvm.sh
+
+# add homebrew to path
+export PATH=/home/linuxbrew/.linuxbrew/bin/:$PATH
+
+# set vim mode bash
+set -o vi
