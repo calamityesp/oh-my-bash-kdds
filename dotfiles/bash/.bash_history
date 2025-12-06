@@ -70,3 +70,59 @@ ls -la
 cd
 #1764998688
 ls -a
+ls
+git status
+clear
+cd DockerNFS/
+ls
+cat setup-oh-my-kdds.sh 
+clear
+ls
+cd
+ls
+cd .oh-my-kdds/
+ls
+git status
+cd dotfiles/
+ls
+cd bash/
+ls
+ls -a
+cd $OSH
+ls
+clear
+ls
+git status
+cd $OSH
+$OSH
+cd .oh-my-kdds/
+ls
+git add . ; git commit -m "dotfile management"; git push
+clear
+ls
+git remote remove origin 
+git remote add origin git@github.com:calamityesp/oh-my-bash-kdds.git
+git pull
+cp /DockerNFS/ssh/* ~/.ssh/
+git pull
+clear
+git status
+clear
+ls
+git status
+git commit -m "adding bash dotfiles" ; git push
+git config --global user.email calamityesp@gmail.com
+git config --global user.name shankey
+clear
+git push
+git push --set-upstream origin main
+git push
+git status
+git commit -m "bash dotfile management"
+git push
+clear
+ls
+git status
+clear
+ls
+exit
